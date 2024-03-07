@@ -39,6 +39,8 @@ jobs:
         run: npm install
       - name: Build
         run: npm run build
+        env: # Aquí agregas tus secretos de GitHub como variables de entorno
+          VITE_API_KEY: ${{ secrets.VITE_API_KEY }}
       - name: Setup Pages
         uses: actions/configure-pages@v3
       - name: Upload artifact
@@ -49,3 +51,5 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
+        env: # Aquí agregas tus secretos de GitHub como variables de entorno
+          VITE_API_KEY: ${{ secrets.VITE_API_KEY }}

@@ -1,37 +1,41 @@
 import { useState } from "react";
 import { AddFirst } from "./components/AddFirst";
+import { GifGrid } from "./components/Gifgrid";
 
 export const Vampires = () => {
-  const [first, setfirst] = useState([`Twilight`, `Vampire Diary's`]);
+  const [first, setfirst] = useState([`Twilight`, `The Vampire Diaries`]);
 
-  console.log(first);
+ 
+  // Agregar elemento a la lista 
+  const onAddFirst=(newFirst)=>{
 
-  const botonClick=()=>{
-    // // OPCIÓN 1
+    // Evitar que el elemento se añada repetido
+    if (first.includes(newFirst)) return;
+    // // OPCIÓaN 1
     // const copiafirst=first;
     // copiafirst.push("Originals")
     // setfirst(copiafirst);
 
     // OPCIÓN 2 recomendado
-    setfirst([...first,`My boyfriend is a Vampire`]);
+    setfirst([...first,newFirst]);
 
     // OPTION 3
-    setfirst(fish => [...fish,`UnderWorld`]);
+    // setfirst(fish => [...fish,newFirst]);
+    console.log(newFirst);
   }
 
   return (
     <>
-    {/* Titulo */}
       <h1>Vampires App </h1>
-      {/* input */}
-      <AddFirst setFuncion={setfirst}/>
-      {/* Listado de Gifs  */}
-      
-      <button onClick={botonClick}>Agregar</button>
-      <ol>
-        {first.map((elemento,position) => {
-            return <li key={`${elemento}-${position}`}> {elemento}</li>;})}
-      </ol>
+      <AddFirst 
+        onNewfirst={(event)=>onAddFirst(event)}
+      />
+      {first.map((elemento,position) =>(
+        <GifGrid 
+          key={`${elemento}`} 
+          category={elemento} />
+        ))
+      } 
     </>
   );
 };
