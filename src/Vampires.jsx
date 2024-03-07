@@ -3,7 +3,7 @@ import { AddFirst } from "./components/AddFirst";
 import { GifGrid } from "./components/Gifgrid";
 
 export const Vampires = () => {
-  const [first, setfirst] = useState([`Twilight`, `The Vampire Diaries`]);
+  const [first, setfirst] = useState([`Twilight`, `The Vampire Diaries`, `Underworld`,`The originals`]);
 
  
   // Agregar elemento a la lista 
